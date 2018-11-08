@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //titles
+    <string name="app_name">The Trade App</string>
+    <string name="activity_title_trade_details">Coins</string>
+    <string name="activity_title_chart">Chart</string>
+    <string name="title_activity_login">Sign in</string>
+
+
+    //General
+    <string name="btn_text_show_trade">Show Trade</string>
+    <string name="btn_text_retry">Retry</string>
+
+
+    //Copyright
+    <string name="copyright_message">Copyright &#169; Muhammad Haris \n mharis99@gmail.com</string>
+
+    //Exception messages
+    <string name="exception_message_generic">There was an application error</string>
+    <string name="exception_message_no_connection">There is no internet connection</string>
+    <string name="exception_message_trade_not_found">Cannot retrieve trade data. Check your internet
+        connection
+    </string>
+
+
+    //Trade screen
+    <string name="high_value">High 24 hr: %1$s</string>
+    <string name="low_value">Low 24 hr: %1$s</string>
+
+
+    //Menu
+    <string name="save_text">Save</string>
+
+
+    //Login
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="error_field_required">This field is required</string>
+
+
+</resources>

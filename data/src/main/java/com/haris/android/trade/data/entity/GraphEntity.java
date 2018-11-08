@@ -4,6 +4,9 @@ import com.google.gson.JsonElement;
 
 public class GraphEntity {
 
+    public GraphEntity() {
+    }
+
     private JsonElement graphData;
 
     public GraphEntity(JsonElement graphData) {

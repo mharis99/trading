@@ -8,21 +8,24 @@ import android.test.ActivityInstrumentationTestCase2;
 import com.haris.android.trade.presentation.R;
 import com.haris.android.trade.presentation.view.activity.TradeActivity;
 
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+
+import static java.util.regex.Pattern.matches;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 
-public class WeatherDetailsActivityTest extends ActivityInstrumentationTestCase2<TradeActivity> {
+public class TradeActivityTest extends ActivityInstrumentationTestCase2<TradeActivity> {
 
 
-    private TradeActivity weatherDetailsActivity;
+    private TradeActivity tradeActivity;
 
-    public WeatherDetailsActivityTest() {
+    public TradeActivityTest() {
         super(TradeActivity.class);
     }
 
@@ -31,7 +34,7 @@ public class WeatherDetailsActivityTest extends ActivityInstrumentationTestCase2
         super.setUp();
 
         this.setActivityIntent(createTargetIntent());
-        this.weatherDetailsActivity = getActivity();
+        this.tradeActivity = getActivity();
     }
 
     @Override
@@ -39,25 +42,26 @@ public class WeatherDetailsActivityTest extends ActivityInstrumentationTestCase2
         super.tearDown();
     }
 
-    public void testContainsWeatherDetailsFragment() {
-        Fragment weatherDetailsFragment =
-                weatherDetailsActivity.getFragmentManager().findFragmentById(R.id.fragmentContainer);
-        assertThat(weatherDetailsFragment, is(notNullValue()));
+    public void testContainsTradeFragment() {
+        Fragment tradeFragment =
+                tradeActivity.getFragmentManager().findFragmentById(R.id.fragmentContainer);
+        assertThat(tradeFragment, is(notNullValue()));
     }
 
     public void testContainsProperTitle() {
-        String actualTitle = this.weatherDetailsActivity.getTitle().toString().trim();
+        String actualTitle = this.tradeActivity.getTitle().toString().trim();
 
-        assertThat(actualTitle, is("Weather Details"));
+        assertThat(actualTitle, is("Trade Details"));
     }
 
-    public void testLoadWeatherHappyCaseViews() {
+    public void testLoadTradeHappyCaseViews() {
+
+
         onView(withId(R.id.rl_retry)).check(matches(not(isDisplayed())));
         onView(withId(R.id.rl_progress)).check(matches(not(isDisplayed())));
 
-//        onView(withId(R.id.weatherTemperature)).check(matches(isDisplayed()));
-//        onView(withId(R.id.weatherTime)).check(matches(isDisplayed()));
-//        onView(withId(R.id.weatherLocation)).check(matches(isDisplayed()));
+        onView(withId(R.id.rv_coins)).check(matches(isDisplayed()));
+
     }
 
 

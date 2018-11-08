@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class CoinEntity {
 
+    public CoinEntity() {
+    }
 
     public CoinEntity(Map<String, Object> coins) {
         this.coins = coins;

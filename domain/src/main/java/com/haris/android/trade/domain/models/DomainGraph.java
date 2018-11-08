@@ -22,6 +22,9 @@ public class DomainGraph {
 
         private Double quoteVolume;
 
+        public GraphDataObj(Double volume) {
+            this.volume = volume;
+        }
 
         public Integer getDate() {
             return date;

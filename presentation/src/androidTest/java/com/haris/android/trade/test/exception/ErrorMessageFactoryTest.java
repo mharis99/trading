@@ -26,7 +26,7 @@ public class ErrorMessageFactoryTest extends AndroidTestCase {
     assertThat(actualMessage, is(equalTo(expectedMessage)));
   }
 
-  public void testWeatherNotFoundErrorMessage() {
+  public void testTradeNotFoundErrorMessage() {
     String expectedMessage = getContext().getString(R.string.exception_message_trade_not_found);
     String actualMessage = ErrorMessageFactory.create(getContext(), new TradeNotAvailableException());
 

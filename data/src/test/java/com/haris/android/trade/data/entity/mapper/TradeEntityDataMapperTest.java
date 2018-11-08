@@ -1,12 +1,17 @@
 
 package com.haris.android.trade.data.entity.mapper;
 
+import com.haris.android.trade.data.entity.CoinEntity;
+import com.haris.android.trade.domain.models.DomainCoin;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
@@ -16,8 +21,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class TradeEntityDataMapperTest {
 
-  private static final int FAKE_WEATHER_ID = 123;
-  private static final String FAKE_NAME = "Karachi";
+  private static final String FAKE_COIN_ID = "BTC_XMR";
+
 
   private TradeEntityDataMapper tradeEntityDataMapper;
 
@@ -27,22 +32,27 @@ public class TradeEntityDataMapperTest {
   }
 
   @Test
-  public void testTransformWeatherEntity() {
-//    WeatherEntity tradeEntity = createFakeWeatherEntity();
-//    DomainWeather trade = tradeEntityDataMapper.transform(tradeEntity);
-//
-//    assertThat(trade, is(instanceOf(DomainWeather.class)));
-//    assertThat(trade.getId(), is(FAKE_WEATHER_ID));
-//    assertThat(trade.getName(), is(FAKE_NAME));
+  public void testTransformCoinEntity() {
+    CoinEntity tradeEntity = createFakeCoinEntity();
+    DomainCoin trade = tradeEntityDataMapper.transform(tradeEntity);
+
+    assertThat(trade, is(instanceOf(DomainCoin.class)));
+    assertThat(trade.getCoins().get(0).getCoinCode(), is(FAKE_COIN_ID));
+
   }
 
 
 
-//  private WeatherEntity createFakeWeatherEntity() {
-//    WeatherEntity tradeEntity = new WeatherEntity();
-//    tradeEntity.setId(FAKE_WEATHER_ID);
-//    tradeEntity.setName(FAKE_NAME);
-//
-//    return tradeEntity;
-//  }
+  private CoinEntity createFakeCoinEntity() {
+    CoinEntity tradeEntity = new CoinEntity();
+
+
+    Map<String, Object> map=new HashMap<>();
+
+    map.put(FAKE_COIN_ID,new Object());
+
+    tradeEntity.setCoins(map);
+
+    return tradeEntity;
+  }
 }

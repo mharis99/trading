@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.verifyZeroInteractions;
@@ -21,9 +22,6 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 @RunWith(MockitoJUnitRunner.class)
 public class GetTradeDetailsTest {
 
-    private static final String FAKE_LAT = "25";
-
-    private static final String FAKE_LNG = "55";
 
   private GetTradeDetails getTradeDetails;
 
@@ -40,10 +38,10 @@ public class GetTradeDetailsTest {
   }
 
   @Test
-  public void testGetWeatherDetailsUseCaseObservableHappyCase() {
-    //getTradeDetails.buildUseCaseObservable(Params.forChart(FAKE_LAT,FAKE_LNG,true));
+  public void testGetTradeDetailsUseCaseObservableHappyCase() {
+    getTradeDetails.buildUseCaseObservable(Params.forTrade(true));
 
-    //verify(mockTradeRepository).trade(FAKE_LAT,FAKE_LNG,true);
+    verify(mockTradeRepository).trade(anyBoolean());
     verifyNoMoreInteractions(mockTradeRepository);
     verifyZeroInteractions(mockPostExecutionThread);
     verifyZeroInteractions(mockThreadExecutor);

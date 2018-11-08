@@ -39,6 +39,9 @@ public class DomainCoin {
 
         private String low24hr;
 
+        public Coin(String coinCode) {
+            this.coinCode = coinCode;
+        }
 
         public Coin(String coinCode, Integer id, String last, String lowestAsk, String highestBid, String percentChange, String baseVolume, String quoteVolume, String isFrozen, String high24hr, String low24hr) {
             this.coinCode = coinCode;

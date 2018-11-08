@@ -22,34 +22,28 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class WeatherDetailsPresenterTest {
+public class TradePresenterTest {
 
-    private static final String FAKE_LAT = "25";
-
-    private static final String FAKE_LNG = "55";
-
-  private TradePresenter weatherDetailsPresenter;
+  private TradePresenter tradePresenter;
 
   @Mock private Context mockContext;
-  @Mock private TradeView mockWeatherDetailsView;
+  @Mock private TradeView tradeView;
   @Mock private GetTradeDetails mockGetTradeDetails;
   @Mock private TradeModelDataMapper mockTradeModelDataMapper;
 
   @Before
   public void setUp() {
-    weatherDetailsPresenter = new TradePresenter(mockGetTradeDetails, mockTradeModelDataMapper);
-    weatherDetailsPresenter.setView(mockWeatherDetailsView);
+    tradePresenter = new TradePresenter(mockGetTradeDetails, mockTradeModelDataMapper);
+    tradePresenter.setView(tradeView);
   }
 
   @Test
   @SuppressWarnings("unchecked")
-  public void testWeatherDetailsPresenterInitialize() {
-    given(mockWeatherDetailsView.context()).willReturn(mockContext);
+  public void testTradePresenterInitialize() {
+    given(tradeView.context()).willReturn(mockContext);
 
-    //weatherDetailsPresenter.initialize(FAKE_LAT,FAKE_LNG,true);
-
-    verify(mockWeatherDetailsView).hideRetry();
-    verify(mockWeatherDetailsView).showLoading();
+    verify(tradeView).hideRetry();
+    verify(tradeView).showLoading();
     verify(mockGetTradeDetails).execute(any(DisposableObserver.class), any(Params.class));
   }
 }

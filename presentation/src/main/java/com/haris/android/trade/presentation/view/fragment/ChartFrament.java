@@ -53,6 +53,7 @@ public class ChartFrament extends BaseFragment implements ChartView {
     Button bt_retry;
 
     private static long SIX_HOURS_IN_MILLIS = 2160000000l;
+    SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm");
 
     public static ChartFrament forChart(String coinId) {
         final ChartFrament chartFrament = new ChartFrament();
@@ -178,7 +179,7 @@ public class ChartFrament extends BaseFragment implements ChartView {
 
     private void drawChart(GraphModel graphModel) {
 
-        SimpleDateFormat format = new SimpleDateFormat("HH-mm");
+
         List yAxisValues = new ArrayList();
         List axisValues = new ArrayList();
 
@@ -186,8 +187,8 @@ public class ChartFrament extends BaseFragment implements ChartView {
 
         for (int i = 0; i < graphModel.getCoins().size(); i++) {
             Date date = new Date(graphModel.getCoins().get(i).getDate());
-            format.format(date);
-            axisValues.add(i, new AxisValue(i).setLabel(String.valueOf(format.format(date))));
+            DATE_FORMAT.format(date);
+            axisValues.add(i, new AxisValue(i).setLabel(String.valueOf(DATE_FORMAT.format(date))));
             yAxisValues.add(new PointValue(i, Float.valueOf(String.valueOf(graphModel.getCoins().get(i).getVolume()))));
         }
 
